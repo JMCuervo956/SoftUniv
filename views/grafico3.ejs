@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Pastel 3D con Highcharts</title>
+</head>
+<body>
+    <div id="container" style="width: 400px; height: 400px;"></div>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script>
+        Highcharts.chart('container', {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45
+                }
+            },
+            title: {
+                text: 'Pregunta 1'
+            },
+            plotOptions: {
+                pie: {
+                    innerSize: 100,
+                    depth: 250
+                }
+            },
+            series: [{
+                name: 'Votos',
+                data: [
+                    ['Yellow', 12],
+                    ['Blue', 19],
+                    ['Red', 3],
+                    ['Green', 5],
+                    ['Purple', 2]
+                ]
+            }]
+        });
+    </script>
+</body>
+</html>

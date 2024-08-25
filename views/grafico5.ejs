@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Pastel con Highcharts</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+</head>
+<body>
+    <div id="container" style="width: 400px; height: 400px;"></div>
+    <script>
+        Highcharts.chart('container', {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: 'Pregunta 1'
+            },
+            colors: [
+                '#FF6384', // Color para el primer segmento
+                '#36A2EB', // Color para el segundo segmento
+                '#FFCE56', // Color para el tercer segmento
+                '#4BC0C0', // Color para el cuarto segmento
+                '#9966FF'  // Color para el quinto segmento
+            ],
+            plotOptions: {
+                pie: {
+                    innerSize: 100,
+                    depth: 250,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}: {point.y:.1f}%'
+                    }
+                }
+            },
+            series: [{
+                name: 'Porcentaje',
+                data: [
+                    ['Blanco', 12],
+                    ['Si', 19],
+                    ['No', 3]
+                ]
+            }],
+            tooltip: {
+                formatter: function() {
+                    return `<b>${this.point.name}</b>: ${this.point.y}%`;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

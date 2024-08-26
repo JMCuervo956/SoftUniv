@@ -6,7 +6,8 @@ const path = require('path');
 const mysql = require('mysql');
 const app = express();
 const PORT = process.env.PORT || 3000; 
- 
+
+  
 //import {pool} from './db.js'  
 
 ///import {PORT} from './config.js'
@@ -154,7 +155,9 @@ app.post('/auth', async(req, res)=>{    // uso modulo de crud
     let passwordHaash = await bcryptjs.hash(pass, 8);
     if (user && pass){
             connection.query('select * from sarlaft.users where user = ?', [user], async(error, results)=>{
-            if(results.length == 0 || !(await bcryptjs.compare(pass, results[0].pass))){
+                if(results.length == 0 || !(await bcryptjs.compare(pass, results[0].pass))){
+/*
+
                 res.render('inde',{
                     wvalor:wvalor,
                     alert: true,
@@ -165,7 +168,7 @@ app.post('/auth', async(req, res)=>{    // uso modulo de crud
                     timer:false,
                     ruta:'inde' 
                 });
-/*
+*/
 
                 res.render('login',{
                     wvalor:wvalor,
@@ -176,9 +179,7 @@ app.post('/auth', async(req, res)=>{    // uso modulo de crud
                     showConfirmButton:true,
                     timer:false,
                     ruta:'login' 
-                });
-*/                    
-
+                }); 
                 }else{
               const wname = wvalor;
                 req.session.loggedin = true             // ayuda las demas paginas para saber que todo esta ok
@@ -259,9 +260,11 @@ app.get('/logout', (req, res)=>{
 //    console.log(`Servidor corriendo en el puerto ${PORT}`);
 //  });
 
-app.get('/', (req, res) => {
+/*
+app.get('/inde', (req, res) => {
     res.render('inde'); // Renderiza la vista
 });
+*/
 
   app.listen(PORT)
   console.log('Server en port', PORT) 

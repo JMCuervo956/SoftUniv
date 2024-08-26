@@ -153,6 +153,7 @@ app.post('/auth', async(req, res)=>{    // uso modulo de crud
     if (user && pass){
             connection.query('select * from sarlaft.users where user = ?', [user], async(error, results)=>{
             if(results.length == 0 || !(await bcryptjs.compare(pass, results[0].pass))){
+                const wvalor = 12345
                 res.render('login',{
                     wvalor:wvalor,
                     alert: true,
@@ -161,10 +162,10 @@ app.post('/auth', async(req, res)=>{    // uso modulo de crud
                     alertIcon:'error',
                     showConfirmButton:true,
                     timer:false,
-                    ruta:'login'
-            })
+                    ruta:'login' 
+                });
             }else{
-                const wname = wvalor;
+              const wname = wvalor;
                 req.session.loggedin = true             // ayuda las demas paginas para saber que todo esta ok
                 req.session.name = results[0].name
                 console.log("El nombre es:", id = results[0].name);
@@ -181,7 +182,7 @@ app.post('/auth', async(req, res)=>{    // uso modulo de crud
                     }
                     )
             }
-        })
+        }) 
     }else{
         res.render('login',{
             wvalor:wvalor,
@@ -192,7 +193,7 @@ app.post('/auth', async(req, res)=>{    // uso modulo de crud
             showConfirmButton:true,
             timer:1500,
             ruta:''})
-    }
+        } 
 })
 
 // Preguntas
@@ -239,9 +240,12 @@ app.get('/logout', (req, res)=>{
   
 // Iniciar el servidor 
  
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
-  });
+//app.listen(PORT, () => {
+//    console.log(`Servidor corriendo en el puerto ${PORT}`);
+//  });
+
+  app.listen(PORT)
+  console.log('Server en port', PORT) 
 
 //app.listen(PORT, (req, res)=>{
 //    console.log('Validar SERVER RUNNING IN http://localhost:',PORT);

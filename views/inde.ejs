@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error de Conexión</title>
+</head>
+<body>
+    <% if (locals.error) { %>
+        <p>Error de conexión: <%= locals.error.message %></p>
+        <p>Contenido de la variable externa: <%= locals.externalVariable %></p>
+    <% } else { %>
+        <p>Conectado a la base de datos con éxito.</p>
+    <% } %>
+</body>
+</html>

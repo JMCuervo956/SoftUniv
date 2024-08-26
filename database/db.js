@@ -29,9 +29,27 @@ const connection = mysql.createConnection({
 connection.connect((error)=>{
     if(error){
         console.log('Error de Conexion es: '+error);
+
+        app.locals.error = error;
+        app.locals.externalVariable = externalVariable;
+
         return;
     };
     console.log('conectado a la base de datos');
  });
  
+
 module.exports = connection;
+
+
+// vista nueva para mostrar variables externas
+
+/*
+app.get('/', (req, res) => {
+    res.render('inde'); // Renderiza la vista
+});
+
+app.listen(3002, () => {
+    console.log('Servidor en el puerto 3002');
+});
+*/

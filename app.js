@@ -266,12 +266,14 @@ app.get('/inde', (req, res) => {
 });
 */
 
+/*
   app.listen(PORT)
   console.log('Server en port', PORT) 
+*/
 
-//app.listen(PORT, (req, res)=>{
-//    console.log('Validar SERVER RUNNING IN http://localhost:',PORT);
-//}) 
+app.listen(PORT, (req, res)=>{
+    console.log('Validar SERVER RUNNING IN http://localhost:',PORT);
+}) 
 
 app.get('/registros', (req, res) => {
     console.log('Ingresa BD');
@@ -285,6 +287,8 @@ app.get('/registros', (req, res) => {
     });
 });
 
+/*
 app.get('/inde', (req, res) => {
     console.log('Ingresa BD');
     });
+*/

@@ -1,0 +1,22 @@
+
+
+*/
+
+const DB_HOST = process.env.DB_HOST || 'localhost'
+const DB_USER = process.env.DB_USER || 'josema'
+const DB_PASSWORD = process.env.DB_PASSWORD || 'josema'
+const DB_NAME = process.env.DB_NAME || 'sarlaft'
+const DB_PORT = process.env.DB_PORT || '3306'
+
+// LOCAL
+
+/* 
+PORT = 3002
+DB_HOST=localhost
+DB_DATABASE=sarlaft
+DB_USER=josema
+DB_PASSWORD=josema
+*/
+
+
+

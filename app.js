@@ -116,7 +116,7 @@ app.post('/register', async (req, res)=>{
     const rol = req.body.rol;
     const pass = req.body.pass;
     let passwordHaash = await bcryptjs.hash(pass, 8);
-    connection.query('INSERT into sarlaft.users SET ?', {user:user, name:name, rol:rol, pass:passwordHaash}, async(error, results)=>
+    connection.query('INSERT into users SET ?', {user:user, name:name, rol:rol, pass:passwordHaash}, async(error, results)=>
         {
             if(error){
                 console.log(error);
@@ -154,7 +154,7 @@ app.post('/auth', async(req, res)=>{    // uso modulo de crud
     const pass = req.body.pass;         // toma : name="pass" // capturar valores ingresados de usuario y password
     let passwordHaash = await bcryptjs.hash(pass, 8);
     if (user && pass){
-            connection.query('select * from sarlaft.users where user = ?', [user], async(error, results)=>{
+            connection.query('select * from users where user = ?', [user], async(error, results)=>{
                 if(results.length == 0 || !(await bcryptjs.compare(pass, results[0].pass))){
 /*
 
